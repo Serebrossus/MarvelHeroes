@@ -49,9 +49,20 @@
     <Compile Include="Classes\AntMan.cs" />
     <Compile Include="Classes\AvengersNinjectModule.cs" />
     <Compile Include="Classes\CaptainAmerica.cs" />
+    <Compile Include="Classes\Factory\Dialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Factory\Factory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Factory\IronManDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\Gadgets\NanoparticleGenerator.cs" />
     <Compile Include="Classes\Gadgets\Rope.cs" />
+    <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\IronMan.cs" />
+    <Compile Include="Classes\Weapons\Hammer.cs" />
     <Compile Include="Classes\Weapons\Repulsor.cs" />
     <Compile Include="Classes\Weapons\Shield.cs" />
     <Compile Include="Classes\Weapons\Shuriken.cs" />

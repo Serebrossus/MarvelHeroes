@@ -11,10 +11,11 @@ namespace MarvelHeroes.Classes
         {
             Bind<IWeapon>().To<Shield>().Named("Shield");
             Bind<IWeapon>().To<Repulsor>().Named("Repulsor");
+            Bind<IWeapon>().To<Hammer>().Named("Hammer");
             Bind<IWeapon>().To<Shuriken>().WhenInjectedInto<AntMan>();
 
             Bind<IGadget>().To<NanoparticleGenerator>().Named("NanoparticleGenerator");
-            Bind<IGadget>().To<Rope>().WhenInjectedInto<IronMan>();
+            Bind<IGadget>().To<Rope>().WhenInjectedInto<AntMan>();
         }
     }
 }
