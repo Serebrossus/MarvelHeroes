@@ -10,8 +10,23 @@ namespace MarvelHeroes.Classes
 {
     public class IronMan : IAvenger
     {
-        private IWeapon _weapon;
+        //TODO Если реализовать свойство через Inject и обычным способом в одном классе, то свойство с Inject будет равно null. Причину не выяснял!
+        private IGadget _gadget;
 
+        public IGadget Gadget
+        {
+            get
+            {
+                if (_gadget == null)
+                {
+                    _gadget = Program.AppKernel.Get<IGadget>("NanoparticleGenerator");
+                }
+                return _gadget;
+            }
+        }
+
+        private IWeapon _weapon;
+        
         public IWeapon Weapon
         {
             get
@@ -29,9 +44,9 @@ namespace MarvelHeroes.Classes
             Weapon.Kill();
         }
 
-        public void UseArmor()
+        public void UseGadget()
         {
-            throw new NotImplementedException();
+            Gadget.UseGadget();
         }
     }
 }

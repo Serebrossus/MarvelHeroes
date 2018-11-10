@@ -11,6 +11,9 @@ namespace MarvelHeroes.Classes
     public class AntMan : IAvenger
     {
         [Inject]
+        public IGadget Gadget { get; set; }
+
+        [Inject]
         public IWeapon Weapon { get; set; }
 
         public void UseWeapon()
@@ -18,9 +21,9 @@ namespace MarvelHeroes.Classes
             Weapon.Kill();
         }
 
-        public void UseArmor()
+        public void UseGadget()
         {
-            throw new NotImplementedException();
+            Gadget.UseGadget();
         }
     }
 }

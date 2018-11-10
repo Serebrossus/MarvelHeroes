@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject;
-using Ninject.Modules;
+﻿using MarvelHeroes.Classes.Gadgets;
+using MarvelHeroes.Classes.Weapons;
 using MarvelHeroes.Interfaces;
+using Ninject.Modules;
 
 namespace MarvelHeroes.Classes
 {
@@ -16,6 +12,9 @@ namespace MarvelHeroes.Classes
             Bind<IWeapon>().To<Shield>().Named("Shield");
             Bind<IWeapon>().To<Repulsor>().Named("Repulsor");
             Bind<IWeapon>().To<Shuriken>().WhenInjectedInto<AntMan>();
+
+            Bind<IGadget>().To<NanoparticleGenerator>().Named("NanoparticleGenerator");
+            Bind<IGadget>().To<Rope>().WhenInjectedInto<IronMan>();
         }
     }
 }

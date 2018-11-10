@@ -49,11 +49,14 @@
     <Compile Include="Classes\AntMan.cs" />
     <Compile Include="Classes\AvengersNinjectModule.cs" />
     <Compile Include="Classes\CaptainAmerica.cs" />
+    <Compile Include="Classes\Gadgets\NanoparticleGenerator.cs" />
+    <Compile Include="Classes\Gadgets\Rope.cs" />
     <Compile Include="Classes\IronMan.cs" />
-    <Compile Include="Classes\Repulsor.cs" />
-    <Compile Include="Classes\Shield.cs" />
-    <Compile Include="Classes\Shuriken.cs" />
+    <Compile Include="Classes\Weapons\Repulsor.cs" />
+    <Compile Include="Classes\Weapons\Shield.cs" />
+    <Compile Include="Classes\Weapons\Shuriken.cs" />
     <Compile Include="Interfaces\IAvenger.cs" />
+    <Compile Include="Interfaces\IGadget.cs" />
     <Compile Include="Interfaces\IRepulsor.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Program.cs" />

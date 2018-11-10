@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MarvelHeroes.Interfaces;
 
-namespace MarvelHeroes.Classes
+namespace MarvelHeroes.Classes.Weapons
 {
-    public class Repulsor : IWeapon
+    public class Repulsor : IWeapon, IRepulsor
     {
         public void Destruction()
         {
@@ -22,6 +18,16 @@ namespace MarvelHeroes.Classes
         public void Stunning()
         {
             Console.WriteLine("Repulsor is Stunning");
+        }
+
+        public void Push()
+        {
+            Console.WriteLine("Repulsor is Push");
+        }
+
+        public void BurnOut()
+        {
+            Console.WriteLine("Repulsor is BurnOut");
         }
     }
 }

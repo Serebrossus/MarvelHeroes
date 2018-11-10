@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using  MarvelHeroes.Interfaces;
 
-namespace MarvelHeroes.Classes
+namespace MarvelHeroes.Classes.Weapons
 {
     public class Shield : IWeapon
     {

@@ -22,7 +22,7 @@ namespace MarvelHeroes.Classes
             _weapon.Kill();
         }
 
-        public void UseArmor()
+        public void UseGadget()
         {
             throw new NotImplementedException();
         }

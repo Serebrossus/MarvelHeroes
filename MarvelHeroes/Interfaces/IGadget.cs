@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MarvelHeroes.Interfaces
 {
-    public interface IAvenger
+    public interface IGadget
     {
-        void UseWeapon();
         void UseGadget();
     }
 }

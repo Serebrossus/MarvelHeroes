@@ -16,14 +16,23 @@ namespace MarvelHeroes
         static void Main(string[] args)
         {
             AppKernel = new StandardKernel(new AvengersNinjectModule());
-            var cap = AppKernel.Get<CaptainAmerica>();
-            cap.UseWeapon();
+            try
+            {
+                var cap = AppKernel.Get<CaptainAmerica>();
+                cap.UseWeapon();
 
-            var ironman = new IronMan();
-            ironman.UseWeapon();
+                var ironman = new IronMan();
+                ironman.UseWeapon();
+                ironman.UseGadget();
 
-            var antman = AppKernel.Get<AntMan>();
-            antman.UseWeapon();
+                var antman = AppKernel.Get<AntMan>();
+                antman.UseWeapon();
+                antman.UseGadget();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.ReadLine();
         }
