@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MarvelHeroes.Interfaces;
+﻿using MarvelHeroes.Interfaces;
 using Ninject;
 
 namespace MarvelHeroes.Classes
 {
-    public class IronMan : IUltimateAvenger
+    public class Thor: IUltimateAvenger
     {
         private IArmor _armor;
 
@@ -18,7 +13,7 @@ namespace MarvelHeroes.Classes
             {
                 if (_armor == null)
                 {
-                    _armor = Program.AppKernel.Get<IArmor>("Mark_I");
+                    _armor = Program.AppKernel.Get<IArmor>("ThorClassicArmor");
                 }
                 return _armor;
             }

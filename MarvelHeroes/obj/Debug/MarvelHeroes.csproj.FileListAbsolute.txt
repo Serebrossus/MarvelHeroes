@@ -4,6 +4,8 @@ D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\bin\Debug\MarvelHeroes.exe
 D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\bin\Debug\MarvelHeroes.pdb
 D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\bin\Debug\Ninject.dll
 D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\bin\Debug\Ninject.xml
-D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.csprojResolveAssemblyReference.cache
 D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.exe
 D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.pdb
+D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.csprojAssemblyReference.cache
+D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.csproj.CoreCompileInputs.cache
+D:\Work\TestProjects\MarvelHeroes\MarvelHeroes\obj\Debug\MarvelHeroes.csproj.CopyComplete
