@@ -24,9 +24,11 @@ namespace MarvelHeroes.Classes
 
             Bind<IArmor>().To<ClassicArmor>().Named("ThorClassicArmor");
             Bind<IArmor>().To<Mark_I>().Named("Mark_I");
+            Bind<IArmor>().To<OriginalArmor>().Named("OriginalArmor");
 
             Bind<IUltimateAvenger>().To<Thor>().Named("Thor");
             Bind<IUltimateAvenger>().To<IronMan>().Named("IronMan");
+            Bind<IUltimateAvenger>().To<AntMan>().Named("AntMan");
         }
     }
 }

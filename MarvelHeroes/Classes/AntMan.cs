@@ -8,22 +8,38 @@ using Ninject;
 
 namespace MarvelHeroes.Classes
 {
-    public class AntMan : IAvenger
+    public class AntMan : IUltimateAvenger
     {
-        [Inject]
-        public IGadget Gadget { get; set; }
+        private IArmor _armor;
 
-        [Inject]
-        public IWeapon Weapon { get; set; }
-
-        public void UseWeapon()
+        private IArmor Armor
         {
-            Weapon.Kill();
-        }
+            get
+            {
+                if (_armor == null)
+                {
+                    _armor = Program.AppKernel.Get<IArmor>("OriginalArmor");
+                }
+                return _armor;
+            }
+        }        
 
-        public void UseGadget()
-        {
-            Gadget.UseGadget();
-        }
+        public void UseWeapon() => Armor.UseWeapon();
+
+        public void UseWeapon(int wType) => Armor.UseWeapon(wType);
+
+        public void UseUltimateWeapon() => Armor.UseUltimateWeapon();
+
+        public void UseUltimateWeapon(int wType) => Armor.UseUltimateWeapon(wType);
+
+        public void UseGadget() => Armor.UseGadget();
+
+        public void WearArmor() => Armor.WearArmor();
+
+        public void RemoveArmor() => Armor.RemoveArmor();
+
+        public void SplitArmor() => Armor.SplitArmor();
+
+        public string GetArmorName() => Armor.ArmorName;
     }
 }
