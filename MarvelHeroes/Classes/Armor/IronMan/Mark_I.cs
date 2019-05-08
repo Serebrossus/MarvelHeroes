@@ -1,11 +1,12 @@
-﻿using MarvelHeroes.Interfaces;
+using MarvelHeroes.Interfaces;
 using Ninject;
 using System;
 using System.Linq;
 
-namespace MarvelHeroes.Classes.Armor
+
+namespace MarvelHeroes.Classes.Armor.IronMan
 {
-    public class Mark_I : IArmor
+    public class Mark_I: IArmor
     {
         private readonly string _armorName = "Mark I";
 
@@ -68,11 +69,13 @@ namespace MarvelHeroes.Classes.Armor
 
         public void UseGadget()
         {
+            if(Gadget==null) return;
             Gadget.UseGadget();
         }
 
         public void UseWeapon()
         {
+            if(Weapons.Count() == 0) return;
             Weapons.ToList().ForEach(x =>
             {
                 x.Kill();

@@ -1,16 +1,17 @@
-using MarvelHeroes.Interfaces;
-using Ninject;
 using System;
 using System.Linq;
+using MarvelHeroes.Interfaces;
+using Ninject;
 
-namespace MaevelHeroes.Classes.Armor.AntMan
+namespace MarvelHeroes.Classes.Armor.Thor
 {
-    public class OriginalArmor: IArmor 
+    public class Thor_I: IArmor
     {
-        private readonly string _armorName = "OriginalArmor";
+        private string _armorName = "Thor Classic Armor";
 
         public string ArmorName { get => _armorName; }
 
+        private IGadget _gadget;
 
         public IGadget Gadget
         {
@@ -18,17 +19,26 @@ namespace MaevelHeroes.Classes.Armor.AntMan
             {
                 if (_gadget == null)
                 {
-                    _gadget = Program.AppKernel.Get<IGadget>("Rope");
+                    _gadget = Program.AppKernel.Get<IGadget>("NanoparticleGenerator");
                 }
                 return _gadget;
             }
         }
 
-        [Inject]
-        public IGadget Gadget { get; }
+        private IWeapon[] _weapons;
 
-        [Inject]
-        public IWeapon Weapon { get; }
+        public IWeapon[] Weapons
+        {
+            get
+            {
+                if (_weapons == null)
+                {
+                    var names = new string[] { "Hammer", "Shield" };
+                    _weapons = Helper.PrepareWeapons(names).ToArray();
+                }
+                return _weapons;
+            }
+        }
 
         private IUltimateWeapon[] _ultimateWeapons;
 
@@ -39,14 +49,11 @@ namespace MaevelHeroes.Classes.Armor.AntMan
                 if (_ultimateWeapons == null)
                 {
                     _ultimateWeapons = Program.AppKernel.Get<IUltimateWeapon[]>((x)
-                        =>
-                    { return x.Name == "InfinityGauntlet"; });
+                        => { return x.Name == "StormBreaker"; });
                 }
                 return _ultimateWeapons;
             }
         }
-
-
         public void RemoveArmor()
         {
             Console.WriteLine($"RemoveArmor {ArmorName}");
@@ -59,20 +66,30 @@ namespace MaevelHeroes.Classes.Armor.AntMan
 
         public void UseGadget()
         {
+            if(Gadget == null)
+                return;
+            
             Gadget.UseGadget();
         }
 
         public void UseWeapon()
         {
+            if(Weapons == null)
+                return;
+
             Weapons.ToList().ForEach(x =>
             {
                 x.Kill();
             });
         }
+
         public void UseWeapon(int wType)
         {
             switch (wType)
             {
+                case (int)WeaponType.Hummer:
+                    Program.AppKernel.Get<IWeapon>("Hummer");
+                    break;
                 case (int)WeaponType.Shield:
                     Program.AppKernel.Get<IWeapon>("Shield");
                     break;
@@ -81,7 +98,6 @@ namespace MaevelHeroes.Classes.Armor.AntMan
                     break;
             }
         }
-
 
         public void WearArmor()
         {
@@ -93,7 +109,7 @@ namespace MaevelHeroes.Classes.Armor.AntMan
             var random = new Random();
             UltimateWeapons.ToList().ForEach(x =>
             {
-                x.Attack(random.Next(1, 11));
+                x.Attack(random.Next(1,11));
             });
         }
 

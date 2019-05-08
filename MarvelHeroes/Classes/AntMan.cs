@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace MarvelHeroes.Classes
             {
                 if (_armor == null)
                 {
-                    _armor = Program.AppKernel.Get<IArmor>("OriginalArmor");
+                    _armor = Program.AppKernel.Get<IArmor>("AntMan_I");
                 }
                 return _armor;
             }

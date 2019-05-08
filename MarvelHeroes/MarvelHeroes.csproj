@@ -1,87 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DDAE2FC-901C-4C7A-86C2-427ABF664605}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MarvelHeroes</RootNamespace>
-    <AssemblyName>MarvelHeroes</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup>
+      <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+  
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="System" Version="4.1.0311.2" />
+    <PackageReference Include="System.Xml.Linq" Version="3.5.21022.801" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Classes\AntMan.cs" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Classes\Armor\IronMan\Mark_I.cs" />
-    <Compile Include="Classes\Armor\Thor\ClassicArmor.cs" />
+    <Compile Include="Classes\Armor\AntMan\AntMan_I.cs" />
+    <Compile Include="Classes\Armor\Thor\Thor_I.cs" />
     <Compile Include="Classes\AvengersNinjectModule.cs" />
-    <Compile Include="Classes\CaptainAmerica.cs" />
     <Compile Include="Classes\Gadgets\NanoparticleGenerator.cs" />
     <Compile Include="Classes\Gadgets\Rope.cs" />
     <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\IronMan.cs" />
+    <Compile Include="Classes\AntMan.cs" />
     <Compile Include="Classes\Thor.cs" />
     <Compile Include="Classes\Weapons\Hammer.cs" />
     <Compile Include="Classes\Weapons\InfinityGauntlet.cs" />
-    <Compile Include="Classes\Weapons\Repulsor.cs" />
     <Compile Include="Classes\Weapons\Shield.cs" />
     <Compile Include="Classes\Weapons\Shuriken.cs" />
+    <Compile Include="Classes\Weapons\Repulsor.cs" />
     <Compile Include="Classes\Weapons\StormBreaker.cs" />
     <Compile Include="Interfaces\IArmor.cs" />
     <Compile Include="Interfaces\IAvenger.cs" />
+    <Compile Include="Interfaces\IUltimateAvenger.cs" />
     <Compile Include="Interfaces\IGadget.cs" />
     <Compile Include="Interfaces\IRepulsor.cs" />
     <Compile Include="Interfaces\IUltimateWeapon.cs" />
     <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

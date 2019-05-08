@@ -1,4 +1,4 @@
-﻿using MarvelHeroes.Interfaces;
+using MarvelHeroes.Interfaces;
 using Ninject;
 
 namespace MarvelHeroes.Classes

@@ -1,46 +1,35 @@
-﻿using MarvelHeroes.Interfaces;
+using MarvelHeroes.Interfaces;
 using Ninject;
 using System;
 using System.Linq;
 
-namespace MarvelHeroes.Classes.Armor.Thor
+namespace MarvelHeroes.Classes.Armor.AntMan
 {
-    class ClassicArmor : IArmor
+    public class AntMan_I: IArmor
     {
-
-        private string _armorName = "Thor Classic Armor";
+        //TODO - Need work
+        public AntMan_I() {
+            if(_weapons != null)
+                _weapons.Append(Weapon);
+        }
+        private readonly string _armorName = "AntMan Armor";
 
         public string ArmorName { get => _armorName; }
 
-        private IGadget _gadget;
 
-        public IGadget Gadget
-        {
-            get
-            {
-                if (_gadget == null)
-                {
-                    _gadget = Program.AppKernel.Get<IGadget>("NanoparticleGenerator");
-                }
-                return _gadget;
-            }
-        }
-
+        [Inject]
+        public IGadget Gadget { get; }
         private IWeapon[] _weapons;
 
         public IWeapon[] Weapons
         {
             get
             {
-                if (_weapons == null)
-                {
-                    var names = new string[] { "Hammer", "Shield" };
-                    _weapons = Helper.PrepareWeapons(names).ToArray();
-                }
                 return _weapons;
             }
         }
-
+        [Inject]
+        public IWeapon Weapon { get; }
         private IUltimateWeapon[] _ultimateWeapons;
 
         public IUltimateWeapon[] UltimateWeapons
@@ -50,11 +39,14 @@ namespace MarvelHeroes.Classes.Armor.Thor
                 if (_ultimateWeapons == null)
                 {
                     _ultimateWeapons = Program.AppKernel.Get<IUltimateWeapon[]>((x)
-                        => { return x.Name == "StormBreaker"; });
+                        =>
+                    { return x.Name == "InfinityGauntlet"; });
                 }
                 return _ultimateWeapons;
             }
         }
+
+
         public void RemoveArmor()
         {
             Console.WriteLine($"RemoveArmor {ArmorName}");
@@ -67,36 +59,31 @@ namespace MarvelHeroes.Classes.Armor.Thor
 
         public void UseGadget()
         {
+            if(Gadget==null) return;
             Gadget.UseGadget();
         }
 
         public void UseWeapon()
         {
-            Console.WriteLine($"Weapon count {Weapons.Count()}");
+            if(Weapons == null) return;
             Weapons.ToList().ForEach(x =>
             {
                 x.Kill();
             });
         }
-
         public void UseWeapon(int wType)
         {
             switch (wType)
             {
-                case (int)WeaponType.Hummer:
-                    Program.AppKernel.Get<IWeapon>("Hummer");
-                    break;
                 case (int)WeaponType.Shield:
                     Program.AppKernel.Get<IWeapon>("Shield");
-                    break;
-                case (int)WeaponType.Repulsor:
-                    Program.AppKernel.Get<IWeapon>("Repulsor");
                     break;
                 default:
                     UseWeapon();
                     break;
             }
         }
+
 
         public void WearArmor()
         {
@@ -108,7 +95,7 @@ namespace MarvelHeroes.Classes.Armor.Thor
             var random = new Random();
             UltimateWeapons.ToList().ForEach(x =>
             {
-                x.Attack(random.Next(1,11));
+                x.Attack(random.Next(1, 11));
             });
         }
 

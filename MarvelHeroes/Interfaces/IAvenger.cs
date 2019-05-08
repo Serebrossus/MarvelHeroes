@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,18 +10,5 @@ namespace MarvelHeroes.Interfaces
     {
         void UseWeapon();
         void UseGadget();
-    }
-
-    public interface IUltimateAvenger
-    {
-        void UseWeapon();
-        void UseWeapon(int wType);
-        void UseUltimateWeapon();
-        void UseUltimateWeapon(int wType);
-        void UseGadget();
-        void WearArmor();
-        void RemoveArmor();
-        void SplitArmor();
-        string GetArmorName();
     }
 }
