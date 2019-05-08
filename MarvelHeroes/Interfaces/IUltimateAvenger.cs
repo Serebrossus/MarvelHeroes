@@ -1,4 +1,3 @@
-using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +6,16 @@ using System.Threading.Tasks;
 
 namespace MarvelHeroes.Interfaces
 {
-    public interface IArmor
+    public interface IUltimateAvenger
     {
-        string ArmorName { get; }
-
-        [Inject]
-        IGadget Gadget { get; }
-
-        [Inject]
-        IWeapon[] Weapons { get; }
-
-        [Inject]
-        IUltimateWeapon[] UltimateWeapons { get; }
-
         void UseWeapon();
         void UseWeapon(int wType);
         void UseUltimateWeapon();
-        void UseUltimateWeapon(int attackType);
+        void UseUltimateWeapon(int wType);
         void UseGadget();
         void WearArmor();
         void RemoveArmor();
         void SplitArmor();
+        string GetArmorName();
     }
 }

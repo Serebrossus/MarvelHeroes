@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MarvelHeroes.Interfaces;
 
 namespace MarvelHeroes.Classes.Gadgets
