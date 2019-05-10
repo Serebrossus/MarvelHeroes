@@ -9,6 +9,8 @@ using MarvelHeroes.Interfaces;
 
 namespace MarvelHeroes
 {
+    // TODO add xUnit test https://docs.microsoft.com/ru-ru/dotnet/core/testing/unit-testing-with-dotnet-test
+    // TODO or add nUnit test https://docs.microsoft.com/ru-ru/dotnet/core/testing/unit-testing-with-nunit
     class Program
     {
         public static IKernel AppKernel;
