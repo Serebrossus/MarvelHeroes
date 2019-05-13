@@ -29,15 +29,20 @@ namespace MarvelHeroes.Classes
         InfinityStone = 12,
     }
 
-
     public static class Helper
     {
-        public static IEnumerable<IWeapon> PrepareWeapons(string[] names)
+        /// <summary>
+        /// Create list of weapons available to hero
+        /// </summary>
+        /// <param name="appKernel"></param>
+        /// <param name="names"></param>
+        /// <returns></returns>
+        public static IEnumerable<IWeapon> PrepareWeapons(this IKernel appKernel, string[] names)
         {
             var weapons = new List<IWeapon>();
             foreach (var name in names)
             {
-                var weapon = Program.AppKernel.Get<IWeapon>(name);
+                var weapon = appKernel.Get<IWeapon>(name);
                 if (!weapons.Any(x => x == weapon))
                 {
                     weapons.Add(weapon);
@@ -45,12 +50,20 @@ namespace MarvelHeroes.Classes
             }
             return weapons;
         }
-        public static IEnumerable<IUltimateAvenger> PrepareUltimateAvengers(string[] names)
+        /// <summary>
+        /// Create list of avengers (Ultimate version).
+        /// The creation of hero goes throught the connections
+        /// of the armor, the gadgets and weapons available to this hero
+        /// </summary>
+        /// <param name="appKernel"></param>
+        /// <param name="names"></param>
+        /// <returns></returns>
+        public static IEnumerable<IUltimateAvenger> PrepareUltimateAvengers(this IKernel appKernel, string[] names)
         {
             var avengers = new List<IUltimateAvenger>();
             foreach (var name in names)
             {
-                var avenger = Program.AppKernel.Get<IUltimateAvenger>(b=> {
+                var avenger = appKernel.Get<IUltimateAvenger>(b=> {
                     return b.Name.ToLower() == name.ToLower().Trim();
                 });
                 if (!avengers.Any(x => x == avenger))

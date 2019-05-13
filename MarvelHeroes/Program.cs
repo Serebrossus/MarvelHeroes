@@ -17,29 +17,12 @@ namespace MarvelHeroes
         static void Main(string[] args)
         {
             AppKernel = new StandardKernel(new AvengersNinjectModule());
-            try {
-                Console.WriteLine("Enter avenger name or names separates by commas");
-                var avengerName = Console.ReadLine();
-                var names = avengerName.Split(',').ToArray();
-                var avengers = Helper.PrepareUltimateAvengers(names);
+            
+            Console.WriteLine("Enter avenger name or names separates by commas");
+            var avengerName = Console.ReadLine();
 
-                avengers.ToList().ForEach(avenger =>
-                {
-                    avenger.GetArmorName();
-                    avenger.WearArmor();
-                    avenger.UseGadget();
-                    avenger.UseWeapon();
-                    avenger.UseUltimateWeapon();
-                    avenger.UseUltimateWeapon((int)AtacType.Thunder);
-                    avenger.UseUltimateWeapon((int)AtacType.EarthQuake);
-                    avenger.UseUltimateWeapon((int)AtacType.Lighting);
-                    avenger.SplitArmor();
-                    avenger.RemoveArmor();
-                    Console.WriteLine("//--------------------------//");
-                });
-            } catch (Exception ex) {
-                Console.WriteLine(ex);
-            }
+            var assembly = new AvengersAssembly();
+            assembly.Assembly(AppKernel, avengerName);
 
             Console.WriteLine("Press any key");
             Console.ReadLine();

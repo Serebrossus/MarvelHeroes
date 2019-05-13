@@ -8,6 +8,10 @@ namespace MarvelHeroes.Classes.Armor.IronMan
 {
     public class Mark_I: IArmor
     {
+        private static IKernel AppKernel;
+        public Mark_I (IKernel appKernel) {
+            AppKernel = appKernel;
+        }
         private readonly string _armorName = "Mark I";
 
         public string ArmorName { get => _armorName; }
@@ -20,7 +24,7 @@ namespace MarvelHeroes.Classes.Armor.IronMan
             {
                 if (_gadget == null)
                 {
-                    _gadget = Program.AppKernel.Get<IGadget>("NanoparticleGenerator");
+                    _gadget = AppKernel.Get<IGadget>("NanoparticleGenerator");
                 }
                 return _gadget;
             }
@@ -35,7 +39,7 @@ namespace MarvelHeroes.Classes.Armor.IronMan
                 if (_weapons == null)
                 {
                     var names = new string[] { "Repulsor", "Hammer", "Shield" };
-                    _weapons = Helper.PrepareWeapons(names).ToArray();
+                    _weapons = AppKernel.PrepareWeapons(names).ToArray();
                 }
                 return _weapons;
             }
@@ -48,7 +52,7 @@ namespace MarvelHeroes.Classes.Armor.IronMan
             {
                 if (_ultimateWeapons == null)
                 {
-                    _ultimateWeapons = Program.AppKernel.Get<IUltimateWeapon[]>((x)
+                    _ultimateWeapons = AppKernel.Get<IUltimateWeapon[]>((x)
                         =>
                     { return x.Name == "InfinityGauntlet"; });
                 }
@@ -87,13 +91,13 @@ namespace MarvelHeroes.Classes.Armor.IronMan
             switch (wType)
             {
                 case (int)WeaponType.Hummer:
-                    Program.AppKernel.Get<IWeapon>("Hummer");
+                    AppKernel.Get<IWeapon>("Hummer");
                     break;
                 case (int)WeaponType.Shield:
-                    Program.AppKernel.Get<IWeapon>("Shield");
+                    AppKernel.Get<IWeapon>("Shield");
                     break;
                 case (int)WeaponType.Repulsor:
-                    Program.AppKernel.Get<IWeapon>("Repulsor");
+                    AppKernel.Get<IWeapon>("Repulsor");
                     break;
                 default:
                     UseWeapon();

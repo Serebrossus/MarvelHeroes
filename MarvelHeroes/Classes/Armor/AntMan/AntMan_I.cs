@@ -7,10 +7,13 @@ namespace MarvelHeroes.Classes.Armor.AntMan
 {
     public class AntMan_I: IArmor
     {
+        private static IKernel AppKernel;
+
         //TODO - Need work
-        public AntMan_I() {
+        public AntMan_I(IKernel appKernel) {
             if(_weapons != null)
                 _weapons.Append(Weapon);
+            AppKernel = appKernel;
         }
         private readonly string _armorName = "AntMan Armor";
 
@@ -38,7 +41,7 @@ namespace MarvelHeroes.Classes.Armor.AntMan
             {
                 if (_ultimateWeapons == null)
                 {
-                    _ultimateWeapons = Program.AppKernel.Get<IUltimateWeapon[]>((x)
+                    _ultimateWeapons = AppKernel.Get<IUltimateWeapon[]>((x)
                         =>
                     { return x.Name == "InfinityGauntlet"; });
                 }
@@ -76,7 +79,7 @@ namespace MarvelHeroes.Classes.Armor.AntMan
             switch (wType)
             {
                 case (int)WeaponType.Shield:
-                    Program.AppKernel.Get<IWeapon>("Shield");
+                    AppKernel.Get<IWeapon>("Shield");
                     break;
                 default:
                     UseWeapon();

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Classes\AvengersAssembly.cs" />
     <Compile Include="Classes\Armor\IronMan\Mark_I.cs" />
     <Compile Include="Classes\Armor\AntMan\AntMan_I.cs" />
     <Compile Include="Classes\Armor\Thor\Thor_I.cs" />

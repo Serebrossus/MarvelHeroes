@@ -7,6 +7,10 @@ namespace MarvelHeroes.Classes.Armor.Thor
 {
     public class Thor_I: IArmor
     {
+        private static IKernel AppKernel;
+        public Thor_I (IKernel appKernel) {
+            AppKernel = appKernel;
+        }
         private string _armorName = "Thor Classic Armor";
 
         public string ArmorName { get => _armorName; }
@@ -19,7 +23,7 @@ namespace MarvelHeroes.Classes.Armor.Thor
             {
                 if (_gadget == null)
                 {
-                    _gadget = Program.AppKernel.Get<IGadget>("NanoparticleGenerator");
+                    _gadget = AppKernel.Get<IGadget>("NanoparticleGenerator");
                 }
                 return _gadget;
             }
@@ -34,7 +38,7 @@ namespace MarvelHeroes.Classes.Armor.Thor
                 if (_weapons == null)
                 {
                     var names = new string[] { "Hammer", "Shield" };
-                    _weapons = Helper.PrepareWeapons(names).ToArray();
+                    _weapons = AppKernel.PrepareWeapons(names).ToArray();
                 }
                 return _weapons;
             }
@@ -48,7 +52,7 @@ namespace MarvelHeroes.Classes.Armor.Thor
             {
                 if (_ultimateWeapons == null)
                 {
-                    _ultimateWeapons = Program.AppKernel.Get<IUltimateWeapon[]>((x)
+                    _ultimateWeapons = AppKernel.Get<IUltimateWeapon[]>((x)
                         => { return x.Name == "StormBreaker"; });
                 }
                 return _ultimateWeapons;
@@ -88,10 +92,10 @@ namespace MarvelHeroes.Classes.Armor.Thor
             switch (wType)
             {
                 case (int)WeaponType.Hummer:
-                    Program.AppKernel.Get<IWeapon>("Hummer");
+                    AppKernel.Get<IWeapon>("Hummer");
                     break;
                 case (int)WeaponType.Shield:
-                    Program.AppKernel.Get<IWeapon>("Shield");
+                    AppKernel.Get<IWeapon>("Shield");
                     break;
                 default:
                     UseWeapon();
